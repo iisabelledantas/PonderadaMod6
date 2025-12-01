@@ -17,34 +17,6 @@ Este projeto implementa um sistema completo de navegação autônoma para robôs
 - Utiliza sensores para detectar obstáculos e o alvo
 - Navega autonomamente até alcançar o objetivo
 
-## 🏗️ Arquitetura
-
-O sistema é composto pelos seguintes módulos principais:
-
-```
-┌─────────────────┐
-│   main.cpp      │  ← Ponto de entrada e menu
-└────────┬────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │                                 │
-┌───▼────────┐              ┌────────▼──────┐
-│ ROSBridge  │              │    Mapper     │
-│            │◄─────────────┤               │
-└─────┬──────┘              └───────┬───────┘
-      │                             │
-      │                      ┌──────▼──────┐
-      │                      │ Navigation  │
-      │                      │ (Dijkstra)  │
-      │                      └──────┬──────┘
-      │                             │
-      └──────────┬──────────────────┘
-                 │
-           ┌─────▼─────┐
-           │   Graph   │
-           └───────────┘
-```
-
 ### Componentes
 
 1. **ROSBridge** (`ros_bridge.cpp/hpp`)
@@ -86,3 +58,24 @@ modulo6/
 │   └── ros_bridge.cpp    
 ```
 
+## Execução
+
+1. Compile o pacote:
+```bash
+colcon build 
+```
+
+2. Source o workspace:
+```bash
+source install/setup.bash
+```
+
+3. Inicie o simulador do labirinto:
+```bash
+ros2 run cg maze
+```
+
+4. Em outro terminal, execute o programa principal:
+```bash
+ros2 run modulo6 maze_solver
+```
